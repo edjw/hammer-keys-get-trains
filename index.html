@@ -21,30 +21,30 @@
 </head>
 
 <body x-data="newImage()" x-init="getNewImage()" @keydown="getNewImage()" @click="getNewImage()">
-    <img x-bind:src=`images/${currentImage}.jpg` src="">
+    <img x-bind:src="currentImage" src="">
+
+    <script>
+
+        function newImage() {
+
+            return {
+                currentImage: "",
+                getNewImage() { this.currentImage = `images/${getNewRandomImage(this.currentImage)}.jpg` }
+            }
+
+            function getNewRandomImage(currentImage) {
+                let numberOfImages = 16;
+                let newRandomImage = Math.floor(Math.random() * numberOfImages) + 1;
+                if (newRandomImage != currentImage) {
+                    return newRandomImage;
+                }
+                else {
+                    return getNewRandomImage(currentImage);
+                }
+            }
+        }
+
+    </script>
 </body>
-
-<script>
-
-    function newImage() {
-
-        return {
-            currentImage: "",
-            getNewImage() { this.currentImage = getNewRandomImage(this.currentImage) }
-        }
-
-        function getNewRandomImage(currentImage) {
-            let numberOfImages = 16;
-            let newRandomImage = Math.floor(Math.random() * numberOfImages) + 1;
-            if (newRandomImage != currentImage) {
-                return newRandomImage;
-            }
-            else {
-                return getNewRandomImage(currentImage);
-            }
-        }
-    }
-
-</script>
 
 </html>
