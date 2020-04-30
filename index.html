@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔨⌨🚂Hammer keys. Get trains.</title>
+
+    <style>
+        img {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            max-height: 90vh;
+            margin: auto;
+            margin-top: 3vh;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+</head>
+
+<body x-data="newImage()" @keydown="getNewImage()" @click="getNewImage()">
+    <img x-bind:src=`images/${currentImage}.jpg` src="images/1.jpg">
+</body>
+
+<script>
+
+    function newImage() {
+
+        return {
+            currentImage: 1,
+            getNewImage() { this.currentImage = getNewRandomImage(this.currentImage) }
+        }
+
+        function getNewRandomImage(currentImage) {
+            let numberOfImages = 16;
+            let newRandomImage = Math.floor(Math.random() * numberOfImages) + 1;
+            if (newRandomImage != currentImage) {
+                return newRandomImage;
+            }
+            else {
+                return getNewRandomImage(currentImage);
+            }
+        }
+    }
+
+</script>
+
+</html>
