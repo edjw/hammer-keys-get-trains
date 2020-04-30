@@ -20,7 +20,7 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 
-<body x-data="newImage()" x-init="getNewImage()" @keydown="getNewImage()" @click="getNewImage()">
+<body x-data="newImage()" x-init="getNewImage()" @keydown="getNewImage()" @click.window="getNewImage()">
     <img x-bind:src="currentImage" src="">
 
     <script>
