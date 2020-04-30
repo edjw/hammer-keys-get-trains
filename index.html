@@ -20,8 +20,8 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 
-<body x-data="newImage()" @keydown="getNewImage()" @click="getNewImage()">
-    <img x-bind:src=`images/${currentImage}.jpg` src="images/1.jpg">
+<body x-data="newImage()" x-init="getNewImage()" @keydown="getNewImage()" @click="getNewImage()">
+    <img x-bind:src=`images/${currentImage}.jpg` src="">
 </body>
 
 <script>
@@ -29,7 +29,7 @@
     function newImage() {
 
         return {
-            currentImage: 1,
+            currentImage: "",
             getNewImage() { this.currentImage = getNewRandomImage(this.currentImage) }
         }
 
